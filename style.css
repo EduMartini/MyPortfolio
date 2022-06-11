@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Poppins:wght@200;400;600&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+    font-family: 'Poppins', 'Times New Roman', Times, serif ;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 0.05rem;
+}
+
+.presentationContainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionTitle {
+    font-size: 4rem;
+    font-weight: 600px;
+    color: black;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+/*Seção de apresentação*/
+
+#initialPresentation {
+    background-image: url(./imagemFundo.png);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+
+#initialPresentation h1 {
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color: transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1.5s;
+}
+#initialPresentation h1:nth-child(1){
+    animation-delay: 1s;
+}
+#initialPresentation h1:nth-child(2){
+    animation-delay: 2s;
+}
+#initialPresentation h1:nth-child(3){
+    animation: text_reveal_name .5 ease forwards;
+    animation-delay: 3s;
+}
+
+#initialPresentation .cta {
+    display: inline-block;
+    padding: 10px 30px;
+    color: gold;
+    background-color: transparent;
+    border: 2px solid gold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 20px;
+    transition: .3s ease;
+    transition-property: background-color, color;
+}
+
+#initialPresentation .cta:hover {
+    color: black;
+    font-weight: 400;
+    background-color: gold;
+}
+
+#initialPresentation h1 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    animation: text_reveal_box 1s ease;
+    animation-delay: .5s;
+    background-color: gold;
+}
+
+#initialPresentation h1:nth-child(1) span{
+    animation-delay: .5s;
+}
+#initialPresentation h1:nth-child(2) span{
+    animation-delay: 1.5s;
+}
+#initialPresentation h1:nth-child(3) span{
+    animation-delay: 2.5s;
+}
+
+#initialPresentation::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+
+
+/*Seção de Portifólio*/
+
+#portfolio .portfolioContainer{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+#portfolio .portfolioHeader h1{
+    margin-bottom: 50px;
+}
+#portfolio .allProjects {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#portfolio .projectItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#portfolio .projectInfo {
+    padding: 30px;
+    flex-basis: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(60deg, #1029b5 0%, #000042 100%);
+    color: white
+}
+
+#portfolio .projectInfo h1 {
+    font-size: 4rem;
+    font-weight: 600px;
+}
+
+#portfolio .projectInfo h2 {
+    font-size: 1.8rem;
+    font-weight: 600px;
+    margin-top: 10px;
+}
+
+#portfolio .projectImage {
+    flex-basis: 50%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+#portfolio .projectImage:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    opacity: 0.7;
+}
+
+#portfolio .projectImage {
+    transition: 0.5s;
+}
+
+#portfolio .projectItem:hover .projectImage{
+    transform: scale(1.1);
+}
+
+/* Keyframes */
+
+@keyframes text_reveal{
+    100%{
+        color: white;
+    }
+}
+
+@keyframes text_reveal_name{
+    100%{
+        color:gold;
+        font-weight: 600;
+    }
+}
+
+@keyframes text_reveal_box {
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%
+    }
+}
+
+/* Media Query */
+
+@media only screen and (min-width: 768px) {
+    #portfolio .projectItem {
+        flex-direction: row;
+        height: 400px;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    #portfolio .allProjects .projectInfo {
+        height: 100%;
+    }
+
+    #portfolio .allProjects .projectImage {
+        height: 100%;
+    }
+
+    #portfolio .projectItem:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+}
